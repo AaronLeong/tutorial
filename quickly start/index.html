@@ -1,0 +1,18 @@
+    <!DOCTYPE html>
+    <html>
+        <head>
+    		<meta charset="utf-8">
+	    	<script type="text/javascript" src="http://115.29.149.19:3000/framework/org.underscorejs.underscore/underscore.js"></script>
+		    <script type="text/javascript" src="http://115.29.149.19:3000/framework/org.bcsphere.bluetooth/bluetoothapi.js"></script>
+		    <script type="text/javascript" src="http://115.29.149.19:3000/framework/org.bcsphere/bc.js"></script>
+		    <script>
+			    document.addEventListener('deviceready',function(){
+				    var BC = window.BC = cordova.require('org.bcsphere.bcjs');
+			    },false);
+			
+			    document.addEventListener('bcready',function(){
+				    alert("bcsphere is prepared well!");
+			    });
+		    </script>
+	    </head>
+    </html>
