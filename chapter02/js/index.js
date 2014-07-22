@@ -16,7 +16,13 @@
 
 var app = {
 
-	device :{},
+	device : null,
+	
+	service : null,
+	
+	characteristic1 : null,
+	
+	characteristic2 : null,
 
     // Application Constructor
     initialize: function() {
@@ -33,7 +39,7 @@ var app = {
 	},
 	
 	onBCReady : function(){
-		app.device = new BC.Device({deviceAddress:"20:CD:39:AD:65:20",type:"BLE"});
+		app.device = new BC.Device({deviceAddress:"78:C5:E5:99:26:54",type:"BLE"});
 		app.device.addEventListener("deviceconnected",function(device){
             alert("device:" + device.deviceAddress + "is connected successfully!");
 		});
@@ -42,18 +48,14 @@ var app = {
 		});
 	},
 	
-	write : function(){
+	connect : function(){
 		var device = app.device;
 		device.connect(function(){
 			device.discoverServices(function(){
-				var service = device.getServiceByUUID("1802")[0];
-				service.discoverCharacteristics(function(){
-					var character = service.getCharacteristicByUUID("2a26")[0];
-					character.write("Hex","01",function(data){
-						alert(JSON.stringify(data));
-					},function(){
-						alert("write error!");
-					});
+				app.service = device.getServiceByUUID("fff0")[0];
+				app.service.discoverCharacteristics(function(){
+					app.characteristic1 = app.service.getCharacteristicByUUID("fff1")[0];
+					app.characteristic2 = app.service.getCharacteristicByUUID("fff4")[0];
 				},function(){
 					alert("discoverCharacteristics error!");
 				});
@@ -62,6 +64,52 @@ var app = {
 			});
 		},function(){
 			alert("connnect error!");
+		});		
+	},
+	
+	write : function(){
+		app.characteristic1.write("Hex","01",function(data){
+			alert(JSON.stringify(data));
+		},function(){
+			alert("write error!");
+		});
+	},
+	
+	read : function(){
+		app.characteristic1.read(function(data){
+			alert(JSON.stringify(data));
+		},function(){
+			alert("read error!");
+		});
+	},
+	
+	subscribe : function(){
+		app.characteristic2.subscribe(function(data){
+			alert(JSON.stringify(data));
+		});
+	},
+	
+	unsubscribe : function(){
+		app.characteristic2.unsubscribe(function(){
+			alert("unsubscribe success");
+		},function(){
+			alert("unsubscribe error!");
 		});
 	},
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
