@@ -35,9 +35,9 @@ var app = {
     	$('#scanOnOff').change(function(){
 			var state = $("#scanOnOff").val();
 			if(state == 1){
-				BC.IBeaconManager.StartIBeaconScan();
+				BC.Bluetooth.StartIBeaconScan();
 			}else if(state == 0){
-				BC.IBeaconManager.StopIBeaconScan();
+				BC.Bluetooth.StopIBeaconScan();
 			}
 		});
     },
