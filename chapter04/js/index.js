@@ -16,6 +16,7 @@
 
 var interval_scan_index = "";
 var scan_timestamp = 0;
+//var ProximityUUID = "e2c56db5-dffb-48d2-b060-d0f5a71096e0";
 
 var app = {
 
@@ -34,9 +35,9 @@ var app = {
     	$('#scanOnOff').change(function(){
 			var state = $("#scanOnOff").val();
 			if(state == 1){
-				BC.Bluetooth.StartScan("LE");
+				BC.IBeaconManager.StartIBeaconScan();
 			}else if(state == 0){
-				BC.Bluetooth.StopScan();
+				BC.IBeaconManager.StopIBeaconScan();
 			}
 		});
     },
