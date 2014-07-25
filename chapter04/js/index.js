@@ -45,7 +45,6 @@ var app = {
 	onDeviceReady : function(){
 		var BC = window.BC = cordova.require("org.bcsphere.bcjs");
 		var BC = window.BC = cordova.require("org.bcsphere.ibeacon");
-		var _ = window._ = cordova.require("org.underscorejs.underscore");
 	},
 	
 	onBCReady: function() {
