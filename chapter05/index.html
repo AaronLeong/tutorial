@@ -10,8 +10,8 @@
 		<script type="text/javascript" src="http://115.29.149.19:3000/framework/org.underscorejs.underscore/underscore.js"></script>
 		<script type="text/javascript" src="http://115.29.149.19:3000/framework/org.bcsphere.bluetooth/bluetoothapi.js"></script>
 		<script type="text/javascript" src="http://115.29.149.19:3000/framework/org.bcsphere/bc.js"></script>
-		<script type="text/javascript" src="http://115.29.149.19:3000/framework/org.bcsphere.ibeacon/ibeaconapi.js"></script>
-		<script type="text/javascript" src="http://115.29.149.19:3000/framework/org.bcsphere/ibeacon.js"></script>	
+		<script type="text/javascript" src="http://115.29.149.19:3000/framework/org.bluetooth.service/immediate_alert.js"></script>
+		<script type="text/javascript" src="http://115.29.149.19:3000/framework/org.bluetooth.profile/find_me.js"></script>
 		<script type="text/javascript" charset="utf-8" src="js/index.js"></script>
 		
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,13 +26,11 @@
 	<body>
 		<div data-role='page' id="content_page">
 			<div data-role='header' data-id="PersistentHeader" data-position="fixed">
-				<h1>Chapter04</h1>
-				<div data-role="fieldcontain">  
-            		<select name="scan" id="scanOnOff" data-role="slider" >  
-                		<option value="0" selected="selected">IBeacon Scan</option>  
-                		<option value="1">Scanning...</option>  
-            		</select>
-        		</div>      
+				<h1>Chapter05</h1>     
+			</div>
+			<div data-role='content'>
+				<a id="findme" href="javascript:void(0)" onclick="app.findme()" data-role="button">Find me!</a>
+				<a id="foundme" href="javascript:void(0)" onclick="app.foundme()" data-role="button">Found me!</a>
 			</div>
 		</div>
 	
